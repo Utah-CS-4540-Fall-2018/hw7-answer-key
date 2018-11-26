@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Title:</strong>
+  <%= link_to @listing.title, @listing.url, target: "_blank" %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @listing.description %>
+</p>
+
+<p>
+  <strong>Pricing:</strong>
+  <%= @listing.pricing %>
+</p>
+
+<%= link_to 'Back to Listings', listings_path, class: 'btn btn-primary' %>

@@ -1,0 +1,16 @@
+<%= show_selection_options %>
+
+<%= javascript_tag do %>
+
+  // Filtering buttons
+  $('#listings-selection-widget button').on('click', function(event){
+    console.log('filter button clicked');
+    $.post(
+    '/listings/set_filter.js',
+    { show_filter: $(event.target).attr('data-filter') },
+    function(data){
+      console.log('back from filtering');
+    })
+  })
+
+<% end %>

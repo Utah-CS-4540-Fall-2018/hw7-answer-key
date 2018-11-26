@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Is automated:</strong>
+  <%= @listings_poll.is_automated %>
+</p>
+
+<p>
+  <strong>Started at:</strong>
+  <%= @listings_poll.started_at %>
+</p>
+
+<p>
+  <strong>Finished at:</strong>
+  <%= @listings_poll.finished_at %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @listings_poll.notes %>
+</p>
+
+<%= link_to 'Edit', edit_listings_poll_path(@listings_poll) %> |
+<%= link_to 'Back', listings_polls_path %>

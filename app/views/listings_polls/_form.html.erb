@@ -1,0 +1,37 @@
+<%= form_with(model: listings_poll, local: true) do |form| %>
+  <% if listings_poll.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(listings_poll.errors.count, "error") %> prohibited this listings_poll from being saved:</h2>
+
+      <ul>
+      <% listings_poll.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :is_automated %>
+    <%= form.check_box :is_automated %>
+  </div>
+
+  <div class="field">
+    <%= form.label :started_at %>
+    <%= form.datetime_select :started_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :finished_at %>
+    <%= form.datetime_select :finished_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_area :notes %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

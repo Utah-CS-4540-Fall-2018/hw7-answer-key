@@ -1,0 +1,11 @@
+<tr>
+  <td>
+    <%= content_tag :input, '', type: 'checkbox', id: "listing_#{listing.id}", class: 'listing-checkbox', value: 'false', 'data-object-id': listing.id %>
+  </td>
+  <td>
+    <%# -- I've made the show action a link under the listing title -- %>
+    <%= status_to_icon(listing.status) %>
+    <%= link_to listing.title, listing %></td>
+  <td><%= listing.pricing %></td>
+  <td><%= time_ago_in_words(listing.listings_poll.finished_at) unless listing.listings_poll.finished_at.blank? %></td>
+</tr>

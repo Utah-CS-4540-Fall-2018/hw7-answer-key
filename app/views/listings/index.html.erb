@@ -1,0 +1,62 @@
+
+<h3>Your Listings</h3>
+<div id='listings-button-bar'>
+  <span id='mass-edit-widget'>
+    <%= render 'mass_edit_buttons' %>
+  </span>
+
+  <span id='listings-selection-widget' class='pull-right'>
+    <%= render 'filter_buttons' %>
+  </span>
+</div>
+<table class="table fixed-header">
+  <thead>
+    <tr>
+      <th><input type="checkbox" id="select_all_checkbox"></th>
+      <th>Title</th>
+      <th>Pricing</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+
+  <tbody id='listings-table-body'>
+    <%= render 'listing_table_body', listings: @listings %>
+  </tbody>
+</table>
+
+<%# -- removing the link to add a new listing because we don't want done by a user -- %>
+
+
+<%= javascript_tag do %>
+ 
+    // If the user clicks on the select-all checkbox, we want to toggle all
+    // listings as on or off.
+    $('#select_all_checkbox').on('change', function(event){
+      // set all the listings checkboxes to the same as the 
+      // select_all_checkbox
+      console.log('changing checkboxes to ' + $(event.target).is(':checked'))
+      $('.listing-checkbox').prop('checked',$(event.target).is(':checked'))
+    })
+
+    // Mass editing widget button got clicked
+    $('#mass-edit-widget button').on('click', function(event){
+      console.log('mass editing button clicked');
+      // collect the IDs of all the checked listings
+      checked_listings = $('.listing-checkbox:checked')
+      ids = checked_listings.map(function() {
+        return $(this).attr('data-object-id');
+      }).get().join();
+
+      $.post(
+        '/listings/mass_edit.js',
+        { id_list: ids, status_to_set: $(event.target).attr('data-status') },
+        function(data){
+          // success function - clear the checkboxes
+          $(checked_listings).prop('checked', false)
+      })
+    })
+
+
+
+
+<% end %>

@@ -1,0 +1,19 @@
+<h3>Your Searches</h3>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Keywords</th>
+      <th>Listings Found<th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody id='search-list'>
+    <%= render 'search_list' %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Search', new_search_path, class: 'btn btn-default' %>

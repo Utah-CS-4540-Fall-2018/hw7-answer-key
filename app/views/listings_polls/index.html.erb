@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listings Polls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Is automated</th>
+      <th>Started at</th>
+      <th>Finished at</th>
+      <th>Notes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @listings_polls.each do |listings_poll| %>
+      <tr>
+        <td><%= listings_poll.is_automated %></td>
+        <td><%= listings_poll.started_at %></td>
+        <td><%= listings_poll.finished_at %></td>
+        <td><%= listings_poll.notes %></td>
+        <td><%= link_to 'Show', listings_poll %></td>
+        <td><%= link_to 'Edit', edit_listings_poll_path(listings_poll) %></td>
+        <td><%= link_to 'Destroy', listings_poll, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Listings Poll', new_listings_poll_path %>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>KslWatcherV3</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body class='container'>
+    
+    <div id='button-bar' class="pull-right">
+      <% if logged_in? %>
+        <span class='small-text'>
+          You are logged in as: <%= current_user.email %>
+        </span>
+        <%= link_to "Home", root_path, class: "btn btn-default" %>
+        <%= link_to "Logout", logout_path, method: :delete, class: "btn btn-default" %>
+      <% end %>
+    </div>
+
+    <% if flash.notice %>
+      <p id="notice" class='bg-warning flash-message'>
+        <%= notice %>    
+      </p>
+    <% end %>
+
+    <%= yield %>
+
+  </body>
+</html>
